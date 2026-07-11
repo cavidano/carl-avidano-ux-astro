@@ -9,8 +9,6 @@ In this file:
 // E. Utilities
 // F. Media
 // G. Marquee
-// H. Backdrop Links
-// I. Example Tabs
 
 */
 
@@ -60,10 +58,6 @@ In this file:
   --grid-divider-gap: var(--border-width);
 
   --html-scroll-behavior: auto;
-
-  --backdrop-outline-gap-color: var(--background-color);
-  --backdrop-shadow-outline-color: var(--link-color);
-  --backdrop-shadow-outline-size: 4px;
 }
 
 //////////////////////////////////////////////
@@ -80,22 +74,6 @@ In this file:
 // D. Base Styles
 //////////////////////////////////////////////
 
-button[disabled] {
-  --opacity: 0.375;
-
-  cursor: not-allowed;
-  opacity: var(--opacity);
-
-  &:hover {
-    opacity: var(--opacity);
-    transition: none;
-
-    [class*='__text'] {
-      text-decoration: none;
-    }
-  }
-}
-
 :is(img, picture) {
   height: auto;
 }
@@ -103,15 +81,6 @@ button[disabled] {
 //////////////////////////////////////////////
 // E. Utilities
 //////////////////////////////////////////////
-
-hr.divider {
-  margin-block: var(--spacer-5);
-  max-width: calc(var(--narrow-width) - calc(var(--container-padding-x) * 2));
-}
-
-.icon--rotate {
-  animation: rotate360 1.75s linear infinite;
-}
 
 .list-unstyled {
   list-style: none;
@@ -127,25 +96,6 @@ hr.divider {
 
   li:has(p):not(:last-child) {
     margin-bottom: var(--paragraph-margin-bottom);
-  }
-
-  &.bulleted--columns {
-    column-count: 1;
-    column-gap: var(--spacer-3);
-
-    @include breakpoint.breakpoint-up(md) {
-      column-count: 2;
-    }
-
-    li {
-      break-inside: avoid;
-    }
-  }
-
-  &.bulleted--columns-3 {
-    @include breakpoint.breakpoint-up(lg) {
-      column-count: 3;
-    }
   }
 }
 
@@ -169,54 +119,4 @@ figure img,
   display: flex;
   flex-direction: column;
   position: relative;
-}
-
-//////////////////////////////////////////////
-// H. Backdrop Links
-//////////////////////////////////////////////
-
-a.backdrop {
-  box-shadow: 0 0 0 0 var(--backdrop-shadow-outline-color);
-  display: block;
-  outline: var(--backdrop-shadow-outline-size) solid transparent;
-  overflow: hidden;
-  transition:
-    box-shadow 0.25s ease-in-out,
-    transform 0.25s ease-in-out,
-    outline 0.25s ease-in-out;
-
-  img {
-    transition: transform 0.25s ease-in-out;
-  }
-
-  &:focus-visible,
-  &:hover {
-    box-shadow: 0 0 0 10px var(--backdrop-shadow-outline-color);
-    outline: var(--backdrop-shadow-outline-size) solid var(--backdrop-outline-gap-color);
-    transform: scale(1.025);
-
-    img {
-      transform: scale(2);
-      transition: transform 12s ease-in-out;
-    }
-  }
-}
-
-//////////////////////////////////////////////
-// I. Example Tabs
-//////////////////////////////////////////////
-
-.example-tabs {
-  --tab-nav-pill-active-text-color: var(--background-color);
-  --tab-nav-pill-active-background-color: var(--link-color);
-
-  font-size: var(--font-size-md);
-
-  [class*='__button'] {
-    font-weight: var(--font-weight-bold);
-
-    &:is([class*='is-active']) {
-      text-decoration: underline;
-    }
-  }
 }
