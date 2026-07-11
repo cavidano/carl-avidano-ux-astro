@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header/Header.astro';
 import { getAllProjects, getProjectBySlug } from '../../lib/projects.js';
@@ -24,7 +25,7 @@ interface ProjectFrontmatter {
 
 interface Project {
   slug: string;
-  marqueeImageUrl: string;
+  marqueeImage: ImageMetadata;
   Content: any;
   frontmatter: ProjectFrontmatter;
 }
@@ -75,7 +76,7 @@ const projectThemeStyles = `--primary: ${frontmatter.primaryColor}; --primary-te
             </div>
 
             <div class="grid__colspan-4--xl">
-              <img class="project-image" src={project.marqueeImageUrl} alt="" />
+              <Image class="project-image" src={project.marqueeImage} alt="" />
             </div>
           </div>
         </div>

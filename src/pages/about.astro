@@ -1,9 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header/Header.astro';
 import AboutContent, { frontmatter } from '../content/pages/about.mdx';
 import AboutHeading from '../components/AboutHeading.astro';
-import portraitUrl from '../images/carl-avidano-16x9.jpg?url';
+import portrait from '../images/carl-avidano-16x9.jpg';
 
 const { title, description, portraitAlt, profile, cta } = frontmatter;
 const mdxComponents = {
@@ -11,11 +12,13 @@ const mdxComponents = {
 };
 ---
 <Layout title={title} description={description}>
+
   <Header />
 
   <main class="container wide" id="skip-header-target">
+    
     <div class="margin-y-5 position-relative">
-      <img class="project-image" src={portraitUrl} alt={portraitAlt} />
+      <Image class="project-image" src={portrait} alt={portraitAlt} />
     </div>
 
     <article class="border-top padding-y-4">

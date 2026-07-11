@@ -20,7 +20,8 @@ caseStudy:
     - Open-source maintenance and releases
 ---
 
-import natura11yEcosystemLogos from '../../images/natura11y/natura11y-ecosystem-logos.svg?url';
+import { Image } from 'astro:assets';
+import natura11yEcosystemLogos from '../../images/natura11y/natura11y-ecosystem-logos.svg';
 
 <CaseStudyOverview caseStudy={frontmatter.caseStudy}>
 
@@ -37,7 +38,7 @@ Rather than setting out to replace existing frameworks, my goal was to create a 
 
 <FigureSingle width='narrow'>
 
-<img className='display-block width-100' src={natura11yEcosystemLogos} alt="Natura11y ecosystem logos" />
+<Image class="display-block width-100" src={natura11yEcosystemLogos} alt="Natura11y ecosystem logos" />
     
 </FigureSingle>
 

@@ -1,11 +1,10 @@
 const projectModules = import.meta.glob('/src/content/portfolio/*.mdx', { eager: true });
-const imageModules = import.meta.glob('/src/images/**/*.{avif,gif,jpeg,jpg,png,svg,webp}', {
+const imageModules = import.meta.glob('/src/images/**/*.{avif,gif,jpeg,jpg,png,webp}', {
   eager: true,
-  import: 'default',
-  query: '?url'
+  import: 'default'
 });
 
-export function resolveImageUrl(imagePath) {
+export function resolveImage(imagePath) {
   if (!imagePath) return '';
 
   const normalizedPath = imagePath
@@ -25,7 +24,7 @@ export function getAllProjects() {
         slug,
         Content: module.default,
         frontmatter: module.frontmatter,
-        marqueeImageUrl: resolveImageUrl(module.frontmatter?.marqueeImage)
+        marqueeImage: resolveImage(module.frontmatter?.marqueeImage)
       };
     })
     .filter((project) => project.slug && project.frontmatter?.published !== false)
