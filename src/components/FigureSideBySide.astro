@@ -7,10 +7,13 @@ const {
 const groupWidth = width === 'medium' ? 'medium' : 'wide';
 const groupClasses = [groupWidth, margin].filter(Boolean).join(' ');
 ---
+
 <div class="container wide">
+  
   <div class={groupClasses}>
     <div class="grid grid--column-2 gap-3">
       <slot />
     </div>
   </div>
+  
 </div>

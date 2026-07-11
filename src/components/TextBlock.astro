@@ -2,8 +2,11 @@
 const { className = '' } = Astro.props;
 const classes = ['narrow', className].filter(Boolean).join(' ');
 ---
+
 <div class="container wide margin-y-5">
+  
   <div class={classes}>
     <slot />
   </div>
+
 </div>

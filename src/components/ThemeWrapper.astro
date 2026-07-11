@@ -9,8 +9,11 @@ const styles = [
   textColor && `--secondary-text: ${textColor}`
 ].filter(Boolean).join('; ');
 ---
+
 <div class="theme-secondary margin-y-6 padding-y-5" style={styles || undefined}>
+  
   <div class="container wide">
     <slot />
   </div>
+
 </div>

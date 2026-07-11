@@ -3,13 +3,16 @@ const currentYear = new Date().getFullYear();
 const buttonStyle = '--button-icon-only-size: 2.5em;';
 ---
 <footer class="container wide margin-top-5">
+  
   <div class="display-flex justify-content-between align-items-center padding-y-3 border-top font-size-sm">
+    
     <div class="flex-column flex-row--md gap-1">
       <span>&copy; {currentYear} - Carl Avidano.</span>
       <span>All Rights Reserved.</span>
     </div>
 
     <div class="display-flex gap-3">
+      
       <div class="theme-picker" style={buttonStyle}>
         <button class="button button--icon-over-text" type="button" data-theme-toggle>
           <span class="button__icon border-radius-circle">
@@ -27,6 +30,9 @@ const buttonStyle = '--button-icon-only-size: 2.5em;';
           <span class="button__text">Back to Top</span>
         </button>
       </div>
+    
     </div>
+  
   </div>
+
 </footer>

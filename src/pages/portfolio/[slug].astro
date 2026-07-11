@@ -76,7 +76,13 @@ const projectThemeStyles = `--primary: ${frontmatter.primaryColor}; --primary-te
             </div>
 
             <div class="grid__colspan-4--xl">
-              <Image class="project-image" src={project.marqueeImage} alt="" />
+              <Image
+                class="project-image"
+                src={project.marqueeImage}
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+              />
             </div>
           </div>
         </div>

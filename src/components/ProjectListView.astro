@@ -21,7 +21,7 @@ interface Props {
 const { projects = [] } = Astro.props as Props;
 ---
 <div class="grid gap-3 margin-y-5">
-  {projects.map((project: ProjectListItem) => (
+  {projects.map((project: ProjectListItem, index: number) => (
     <section
       class="theme-primary container"
       aria-labelledby={`project-${project.slug}`}
@@ -29,7 +29,13 @@ const { projects = [] } = Astro.props as Props;
     >
       <div class="grid grid--column-7--xl align-items-center--xl gap-5--xl">
         <div class="container--xl grid__colspan-4--xl order-2--xl margin-top-4">
-          <Image class="project-image" src={project.marqueeImage} alt="" loading="lazy" />
+          <Image
+            class="project-image"
+            src={project.marqueeImage}
+            alt=""
+            loading={index < 2 ? 'eager' : 'lazy'}
+            fetchpriority={index === 0 ? 'high' : 'auto'}
+          />
         </div>
 
         <div class="container--xl grid__colspan-3--xl margin-y-4">

@@ -18,7 +18,13 @@ const mdxComponents = {
   <main class="container wide" id="skip-header-target">
     
     <div class="margin-y-5 position-relative">
-      <Image class="project-image" src={portrait} alt={portraitAlt} />
+      <Image
+        class="project-image"
+        src={portrait}
+        alt={portraitAlt}
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
 
     <article class="border-top padding-y-4">
