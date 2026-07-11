@@ -1,9 +1,13 @@
 ---
 import { Image } from 'astro:assets';
+
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header/Header.astro';
+
 import AboutContent, { frontmatter } from '../content/pages/about.mdx';
+
 import AboutHeading from '../components/AboutHeading.astro';
+
 import portrait from '../images/carl-avidano-16x9.jpg';
 
 const { title, description, portraitAlt, profile, cta } = frontmatter;
