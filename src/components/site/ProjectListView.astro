@@ -1,7 +1,23 @@
 ---
 import Button from './Button.astro';
 
-const { projects = [] } = Astro.props;
+interface ProjectListItem {
+  slug: string;
+  marqueeImageUrl: string;
+  frontmatter: {
+    title: string;
+    description: string;
+    primaryColor: string;
+    primaryTextColor: string;
+    buttonLabel?: string;
+  };
+}
+
+interface Props {
+  projects?: ProjectListItem[];
+}
+
+const { projects = [] } = Astro.props as Props;
 ---
 <div class="grid gap-3 margin-y-5">
   {projects.map((project) => (
