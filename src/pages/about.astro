@@ -10,7 +10,7 @@ import AboutHeading from '../components/AboutHeading.astro';
 
 import portrait from '../images/carl-avidano-16x9.jpg';
 
-const { title, description, portraitAlt, profile, cta } = frontmatter;
+const { title, description, portraitAlt, profile } = frontmatter;
 const mdxComponents = {
   h1: AboutHeading
 };
@@ -38,10 +38,11 @@ const mdxComponents = {
           
           <AboutContent components={mdxComponents} />
 
-          <a class="button theme-primary font-size-md" href={cta.href} target="_blank" rel="noreferrer">
-            <span class="text">{cta.label}</span>
-            <span class="icon icon-open-new font-size-sm" aria-hidden="true"></span>
+          <a class="button button--has-icon button--outline font-size-md" href="/resume-carl-avidano.pdf" download>
+            <span class="icon icon-file-download" aria-hidden="true"></span>
+            <span class="button__text">Download Resume (PDF)</span>
           </a>
+
         </div>
 
         <div class="grid__colspan-2--xl order-1--xl">
@@ -54,14 +55,31 @@ const mdxComponents = {
             </div>
 
             <div class="font-size-md">
-              <p class="margin-bottom-2">
-                <strong class="display-block">{profile.location}</strong>
-                <span class="display-block">
-                  <a href={`mailto:${profile.email}`}>{profile.email}</a>
-                </span>
-                <span class="display-block">{profile.phone}</span>
-              </p>
+
+                <p class="margin-bottom-2">
+                  <strong>
+                    {profile.location}
+                  </strong>
+                </p>
+
+                <ul class="nav gap-2">
+                  <li>
+                    <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                  </li>
+                  <li>
+                    <a href='https://www.linkedin.com/in/carlavidano/' target='_blank' rel='noreferrer'>
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      {profile.phone}
+                    </a>
+                  </li>
+                </ul>
+
             </div>
+
           </div>
         
         </div>
