@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+
+const {
+  src,
+  alt,
+  caption = null,
+  className = ''
+} = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={['lightbox-thumbnail', className]}
+  data-lightbox="image"
+  data-lightbox-caption={caption}
+  data-lightbox-alt={alt}
+  aria-label={`Enlarge ${caption || 'image'}`}
+>
+  <Image class="display-block width-100" src={src} alt={alt} />
+</button>
+
+<script>
+  import '@natura11y/core';
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) return;
+
+    const trigger = target.closest('[data-lightbox="image"]');
+
+    if (!(trigger instanceof HTMLElement)) return;
+
+    const alt = trigger.dataset.lightboxAlt || '';
+
+    queueMicrotask(() => {
+      const expandedImage = document.querySelector('.lightbox__media img');
+
+      if (expandedImage instanceof HTMLImageElement) {
+        expandedImage.alt = alt;
+      }
+    });
+  });
+</script>

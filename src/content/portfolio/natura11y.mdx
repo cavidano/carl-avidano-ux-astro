@@ -20,8 +20,8 @@ caseStudy:
     - Open-source maintenance and releases
 ---
 
-import { Image } from 'astro:assets';
-import natura11yEcosystemLogos from '../../images/natura11y/natura11y-ecosystem-logos.svg';
+import LightboxImage from '../../components/LightboxImage.astro';
+import designSystemArchitecture from '../../images/natura11y/design-system-architecture.jpg';
 
 <CaseStudyOverview caseStudy={frontmatter.caseStudy}>
 
@@ -36,32 +36,25 @@ The project represents the full design-system lifecycle: defining principles, cr
 </CaseStudyOverview>
 
 
-<FigureSingle width='narrow'>
-
-<Image class="display-block width-100" src={natura11yEcosystemLogos} alt="Natura11y ecosystem logos" />
-    
-</FigureSingle>
-
 <TextBlock>
 
-## An end-to-end design system
+## Ecosystem architecture
 
-Over time, Natura11y has grown into an end-to-end design system. It's been used in real world project such as Cheetah Conservation Fund, Visionlearning, and others. 
+As Natura11y grew, I needed an architecture that could support the expanding ecosystem without allowing its different parts to drift apart. I brought everything into a monorepo and organized it around the single responsibility principle: Core owns the shared styles and vanilla JavaScript, Icons manages the source artwork, icon data, and generated font, and React builds accessible components with Core's styles and utilities. The Astro documentation and Storybook live alongside those packages, giving me one place to develop, test, and document the system.
 
-Naturally supports every part of the project life cycle: from low-fidelity ideation and design exploration to production-ready code. 
-
-
-
-{/* 
-Today, the ecosystem includes:
-
-- Figma UI Kit
-- CSS and JS frameworks (via CDN, GitHub, or NPM)
-- React starter components
-- A maintainable icon library
-- A documentation site built with Astro and MDX */}
+This structure allows me to make a decision once and carry it through the entire ecosystem. The same icon data powers the documentation and Storybook, React reuses Core instead of duplicating its foundations, and each package exports only what other parts of the system need. The result is a maintainable architecture whose parts can evolve and release independently while continuing to work together as one design system.
 
 </TextBlock>
+
+<FigureSingle width='medium' caption="Natura11y ecosystem architecture">
+
+<LightboxImage
+  src={designSystemArchitecture}
+  alt="Diagram of the Natura11y monorepo connecting its Astro documentation and Storybook apps with Core, Icons, and React packages distributed through NPM and CDNs."
+  caption="Natura11y ecosystem architecture"
+/>
+
+</FigureSingle>
 
 <TextBlock>
 
