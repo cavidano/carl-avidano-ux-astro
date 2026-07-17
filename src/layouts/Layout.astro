@@ -1,12 +1,23 @@
 ---
 import Footer from '../components/Footer.astro';
+import defaultSocialImage from '../images/carl-avidano-16x9.jpg';
 import '@natura11y/icons/dist/natura11y-icons.css';
 import '../styles/global.scss';
 
 const {
   title = 'Carl Avidano • UX Manager',
-  description = 'Carl Avidano is a UX manager specializing in digital accessibility and design systems.'
+  description = 'Carl Avidano is a UX leader, researcher, and inclusive design advocate specializing in digital accessibility, design systems, and front-end development.',
+  image = defaultSocialImage,
+  imageAlt = 'Portrait of Carl Avidano',
+  noindex = false
 } = Astro.props;
+
+const siteUrl = Astro.site ?? Astro.url;
+const canonicalUrl = Astro.url.pathname === '/'
+  ? siteUrl.origin
+  : new URL(Astro.url.pathname, siteUrl).href;
+const socialImagePath = typeof image === 'string' ? image : image.src;
+const socialImageUrl = new URL(socialImagePath, siteUrl).href;
 ---
 
 <!doctype html>
@@ -18,7 +29,25 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="generator" content={Astro.generator} />
+
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Carl Avidano" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <link rel="icon" href="/favicon.ico" />
 

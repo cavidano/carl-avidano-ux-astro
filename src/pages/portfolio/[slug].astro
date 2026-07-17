@@ -60,7 +60,12 @@ const title = `${frontmatter.title} • Carl Avidano • UX Manager`;
 const description = frontmatter.description;
 const projectThemeStyles = `--primary: ${frontmatter.primaryColor}; --primary-text: ${frontmatter.primaryTextColor}; --secondary: ${frontmatter.secondaryColor}; --secondary-text: ${frontmatter.secondaryTextColor};`;
 ---
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  image={project.marqueeImage}
+  imageAlt={`${frontmatter.title} case study`}
+>
   <div class="theme-primary overflow-hidden" style={projectThemeStyles}>
     <div>
       <Header />

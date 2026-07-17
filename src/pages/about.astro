@@ -11,11 +11,12 @@ import AboutHeading from '../components/AboutHeading.astro';
 import portrait from '../images/carl-avidano-16x9.jpg';
 
 const { title, description, portraitAlt, profile } = frontmatter;
+const phoneHref = `tel:${profile.phone.replace(/[^\d+]/g, '')}`;
 const mdxComponents = {
   h1: AboutHeading
 };
 ---
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={portrait} imageAlt={portraitAlt}>
 
   <Header />
 
@@ -72,7 +73,7 @@ const mdxComponents = {
                     </a>
                   </li>
                   <li>
-                    <a href="">
+                    <a href={phoneHref}>
                       {profile.phone}
                     </a>
                   </li>
