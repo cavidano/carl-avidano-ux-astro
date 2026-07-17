@@ -1,6 +1,6 @@
 ---
 title: 'Natura11y'
-tagline: 'Accessible Design Ecosystem: From Figma to Production'
+tagline: 'Accessible design ecosystem: From Figma to production'
 description: "End-to-end design system and development framework for accessible digital products."
 primaryColor: '#0d5056'
 primaryTextColor: '#ffffff'
@@ -25,24 +25,27 @@ import designSystemArchitecture from '../../images/natura11y/design-system-archi
 
 <CaseStudyOverview caseStudy={frontmatter.caseStudy}>
 
-## Why I built Natura11y
+## Challenge
 
-Natura11y is an accessibility-first design ecosystem I designed and built to keep design decisions, component behavior, and production code aligned. As my passion for accessibility grew, so did my desire to become a stronger front-end developer and understand how design systems work from conception through production.
+I created Natura11y to make it easier to build highly customized and accessible interfaces, because existing frameworks made that process unnecessarily difficult or restrictive. At the time of its conception, my consulting work included projects that demanded highly customized features. I was also working with the City of New York, where accessibility and inclusive design were becoming central to my design approach.
 
-What began as a personal learning project has grown into an open-source ecosystem containing shared CSS and JavaScript foundations, Figma libraries, an icon system, React components, Astro documentation, Storybook, and coordinated package releases.
+Frameworks like Bootstrap were fast at first, but imposed their own restrictions and became harder to customize as projects grew. I needed a foundation I could fully control, improve over time, and keep pace with emerging web technologies.
 
-The project represents the full design-system lifecycle: defining principles, creating design and code foundations, engineering accessible interactions, documenting component behavior, distributing packages, and applying the system to production websites.
+## Solution
+
+Natura11y is an accessibility-first, platform-agnostic design ecosystem. Shared CSS and JavaScript, UI components, icons, Figma libraries, React components, and documentation provide a flexible foundation that teams can adopt at different levels. It can be used to create a website theme, to extend it with custom components, or to serve as the foundation for a complete branded design system.
+
+## Result
+
+Natura11y has reduced work that once took months to days while giving me more freedom to create highly customized, accessible interfaces. I have used it across client projects, including Visionlearning, and I am now using it to redesign the Cheetah Conservation Fund’s global web presence.
 
 </CaseStudyOverview>
-
 
 <TextBlock>
 
 ## Ecosystem architecture
 
-As Natura11y grew, I needed an architecture that could support the expanding ecosystem without allowing its different parts to drift apart. I brought everything into a monorepo and organized it around the single responsibility principle: Core owns the shared styles and vanilla JavaScript, Icons manages the source artwork, icon data, and generated font, and React builds accessible components with Core's styles and utilities. The Astro documentation and Storybook live alongside those packages, giving me one place to develop, test, and document the system.
-
-This structure allows me to make a decision once and carry it through the entire ecosystem. The same icon data powers the documentation and Storybook, React reuses Core instead of duplicating its foundations, and each package exports only what other parts of the system need. The result is a maintainable architecture whose parts can evolve and release independently while continuing to work together as one design system.
+As Natura11y expanded, I reorganized it into a monorepo that keeps its framework, React components, icons, documentation, and testing connected. I can now make a decision once and carry it across the entire ecosystem, reducing duplicated work and preventing its different parts from falling out of sync.
 
 </TextBlock>
 
@@ -58,9 +61,67 @@ This structure allows me to make a decision once and carry it through the entire
 
 <TextBlock>
 
-### Figma UI Kits
+### Codebase
 
-The Figma UI Kit provides a collection of components and layouts that perfectly align with the front-end framework, giving interaction designers essential tools for creating their own design systems.
+Natura11y’s codebase is designed to be minimal and easy to maintain. Core serves as the shared foundation for the ecosystem, with Sass organized by component, utility, and feature, and focused vanilla JavaScript classes handling interactive behavior. React uses the same styles and imports only the Core utilities it needs, rather than recreating them in a separate implementation.
+
+</TextBlock>
+
+<FigureSingle>
+
+![Natura11y code example in IDE](../../images/natura11y/natura11y-code-ide-example.png)
+
+</FigureSingle>
+
+<TextBlock>
+
+### Components (vanilla and React)
+
+I designed Natura11y’s component library to work across both semantic HTML and React. The HTML examples pair accessible markup with focused vanilla JavaScript, while the React components handle behavior through props, state, refs, and hooks. Both use the same Core styles, utilities, and accessibility patterns.
+
+This allows teams to work in either technology stack without creating a separate design system for each one. Components can stay visually and behaviorally aligned while still feeling native to the environment where they are used.
+
+</TextBlock>
+
+<FigureSideBySide>
+
+<FigureSingle caption="Flyout component in Storybook" isContained={false} margin='margin-y-0'>
+
+![Natura11y HTML and React Flyout component stories in Storybook](../../images/natura11y/storybook-flyout.png)
+
+</FigureSingle>
+
+<FigureSingle caption="Form component in Storybook" isContained={false} margin='margin-y-0'>
+
+![Natura11y HTML and React Form component stories with accessibility testing in Storybook](../../images/natura11y/storybook-form.png)
+
+</FigureSingle>
+
+</FigureSideBySide>
+
+<Divider />
+
+<TextBlock>
+
+## Icon library
+
+Natura11y includes its own icon library. The icon package is versioned alongside the source repository and contains the original vectors, also included in the Figma libraries. This allows designers and developers to easily add, modify, or update icons while ensuring design consistency across projects.
+
+</TextBlock>
+
+<FigureSingle>
+
+![Depiction of the Natura11y icon detail page](../../images/natura11y/project-tour-icons.png)
+    
+</FigureSingle>
+
+<Divider />
+
+<TextBlock>
+
+## Figma UI kits
+
+The Figma UI Kit provides a collection of components and layouts that align perfectly with the front-end framework, giving interaction designers essential tools to create their own design systems.
 
 </TextBlock>
 
@@ -80,39 +141,13 @@ The Figma UI Kit provides a collection of components and layouts that perfectly 
 
 </FigureSideBySide>
 
-<TextBlock>
-
-### Code frameworks and React starter components
-
-Natura11y includes CSS and JavaScript frameworks available through CDN, GitHub, or NPM, along with React starter components for building accessible interfaces.
-
-</TextBlock>
-
-<FigureSingle>
-
-![Natura11y code example in IDE](../../images/natura11y/natura11y-code-ide-example.png)
-    
-</FigureSingle>
+<Divider />
 
 <TextBlock>
 
-### Icon library
+## Public documentation
 
-The expanding icon library provides both the source repository on GitHub and original vector artwork in Figma, enabling designers and developers to create custom icons while maintaining design consistency.
-
-</TextBlock>
-
-<FigureSingle>
-
-![Depiction of the Natura11y icon detail page](../../images/natura11y/project-tour-icons.png)
-    
-</FigureSingle>
-
-<TextBlock>
-
-## Documentation
-
-I built the documentation website using Astro, allowing me to mix framework examples with MDX for comprehensive documentation. All nature imagery was carefully selected from Unsplash with proper photographer credits, and banner images correlate with each page's subject matter.
+I built the documentation website using Astro, allowing me to mix framework examples with MDX for comprehensive documentation. Because Natura11y is inspired by the natural world, I associated each component and page with nature-themed images, all carefully selected from Unsplash with proper photographer credits. This was one of the most enjoyable parts of the project and gives the documentation a warm, welcoming feel that reflects the spirit of the system.
 
 </TextBlock>
 
@@ -128,12 +163,11 @@ I built the documentation website using Astro, allowing me to mix framework exam
 
 ## Templates and examples
 
-Interactive examples demonstrate the framework's capabilities at a high level, providing users with immediate understanding of implementation possibilities.
+Templates offer unbranded, full-page layouts for common page types, providing accessible structure and best practices out of the box. Examples, in contrast, are small, branded comps designed to inspire; they show how Natura11y can be styled for different brands or aesthetics. Together, templates serve as blueprints while examples illustrate how styling works within Natura11y.
 
 </TextBlock>
 
 <ThemeWrapper>
-
 <FigureSingle caption="Template pages for common interface patterns">
 
 ![Natura11y template pages for common interface patterns](../../images/natura11y/natura11y-templates.jpg)
@@ -145,7 +179,6 @@ Interactive examples demonstrate the framework's capabilities at a high level, p
 ![Interactive examples showing Natura11y components in use](../../images/natura11y/natura11y-examples.jpg)
     
 </FigureSingle>
-
 </ThemeWrapper>
 
 <TextBlock>
@@ -164,11 +197,11 @@ Natura11y is not just a personal framework or design exercise. I use it on real 
 
 <TextBlock>
 
-## On the horizon
+## Reflection
 
-I'm currently expanding Natura11y's capabilities within the WordPress ecosystem through a custom Gutenberg theme and block library. The goal is to create a seamless authoring experience that brings the same accessibility-first principles, reusable components, and design system foundations directly into content management workflows.
+Natura11y did not begin as a complete design ecosystem. It grew through years of client work, experimentation, and iteration. As accessibility and design systems became part of my daily practice, Natura11y gave me a way to deepen those skills while building a reusable foundation shaped by the needs of real projects.
 
-Explore the documentation to learn more about Natura11y's architecture, components, design tokens, accessibility features, and implementation patterns.
+Natura11y was created long before generative AI became part of my workflow, but its clear architecture, reusable patterns, and shared design and code foundations make it especially well suited to working with AI. Today, I use it to put AI to work across the full design-system lifecycle, accelerating prototyping, implementation, testing, documentation, and maintenance, while I continue to guide the system's accessibility and overall direction.
 
 </TextBlock>
 
